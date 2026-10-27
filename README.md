@@ -39,7 +39,7 @@ The normalization query uses `IS NOT DISTINCT FROM` to match entities with missi
 ## How to Run
 
 1. Download `infectious_cases.csv` using the dataset link above.
-2. Open `infectious_disease_sql_analysis.ipynb` in Google Colab.
+2. Open `infectious_disease_sql_analysis.ipynb` in Google Colab. In **Runtime → Change runtime type**, select runtime version **2026.01** and CPU.
 3. Restart the runtime and execute all cells in order, from top to bottom.
 4. When prompted, upload `infectious_cases.csv`.
 5. Wait for dependency installation, PostgreSQL startup, and query execution to finish.
@@ -58,4 +58,4 @@ The notebook uses `google.colab.files.upload()`, so these instructions target Go
 
 The saved results show 10,521 source and normalized rows, 245 entities, no orphan records, and no duplicate lookup entries. The division function checks cover a normal value, a zero divisor, and missing arguments. For Ukraine, the first available rabies indicator is 4.34 in 1990 and the last is 5.22 in 2019; this endpoint comparison does not imply a steady trend.
 
-The notebook includes executed query outputs and a short conclusion. Its Python syntax and saved outputs were checked after the English translation; no error outputs are stored. A fresh-runtime end-to-end run of the translated version has not been verified.
+Verified on October 27, 2026 in Google Colab using runtime version **2026.01** (CPU). All **20 code cells** completed in order, from CSV upload and PostgreSQL setup through the final analysis and conclusion. Normalization assertions and SQL function checks passed. The executed notebook, including its outputs, is saved in this repository with no error outputs.
