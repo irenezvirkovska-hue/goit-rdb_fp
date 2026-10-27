@@ -8,7 +8,7 @@ A final project for the NeoVersity relational databases course. This project use
 - Database: PostgreSQL.
 - Tools: Python, pandas, SQLAlchemy, psycopg2, and pgserver.
 - Execution environment: Google Colab.
-- Main notebook: `goit_rdb_fp.ipynb`.
+- Main notebook: `infectious_disease_sql_analysis.ipynb`.
 
 The dataset contains infectious disease indicators by entity and year. Entities include individual countries as well as regional and other aggregate groups. The original notebook's saved outputs show 10,521 records and 245 distinct `Entity`–`Code` pairs.
 
@@ -37,7 +37,7 @@ The normalization query uses `IS NOT DISTINCT FROM` to match entities with missi
 ## How to Run
 
 1. Download `infectious_cases.csv` using the dataset link above.
-2. Open `goit_rdb_fp.ipynb` in Google Colab.
+2. Open `infectious_disease_sql_analysis.ipynb` in Google Colab.
 3. Restart the runtime and execute all cells in order, from top to bottom.
 4. When prompted, upload `infectious_cases.csv`.
 5. Wait for dependency installation, PostgreSQL startup, and query execution to finish.
