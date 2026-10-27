@@ -10,15 +10,17 @@ A final project for the NeoVersity relational databases course. This project use
 - Execution environment: Google Colab.
 - Main notebook: `infectious_disease_sql_analysis.ipynb`.
 
-The dataset contains infectious disease indicators by entity and year. Entities include individual countries as well as regional and other aggregate groups. The original notebook's saved outputs show 10,521 records and 245 distinct `Entity`–`Code` pairs.
+The dataset contains infectious disease indicators by entity and year. Entities include individual countries as well as regional and other aggregate groups. The notebook's saved outputs show 10,521 records and 245 distinct `Entity`–`Code` pairs.
 
 ## Project Tasks
 
 1. **Import data.** Create the `pandemic` schema, import the CSV into `infectious_cases`, and inspect the data structure, types, and missing values.
-2. **Normalize the data.** Extract distinct `Entity`–`Code` pairs into an `entities` table. Store years and disease indicators in `infectious_cases_normalized`, referencing the entity through `entity_id`. Define primary and foreign keys and check row counts and referential integrity.
-3. **Analyze rabies indicators.** Calculate the average, minimum, maximum, and sum of `Number_rabies` for each entity. Sort by average in descending order and return the top 10 results, excluding groups with no observations for this indicator.
+2. **Normalize the data.** Extract distinct `Entity`–`Code` pairs into an `entities` table. Store years and disease indicators in `infectious_cases_normalized`, referencing the entity through `entity_id`. Define primary and foreign keys and assert row counts, referential integrity, and the absence of duplicate lookup entries.
+3. **Analyze rabies indicators.** Include the number of observed years and the first and last observation years. Calculate the average, minimum, maximum, and sum of `Number_rabies` for each entity. Sort by average in descending order and return the top 10 results, excluding groups with no observations for this indicator.
 4. **Calculate year differences.** Construct January 1 of each observation year, include the current date, and calculate the difference in complete years using `MAKE_DATE`, `CURRENT_DATE`, `AGE`, and `EXTRACT`.
 5. **Create SQL functions.** Implement and use `year_difference(input_year)` to calculate year differences and `average_cases(cases_value, divisor)` to divide an annual indicator by a specified number of periods. Demonstrate divisors of 12, 4, and 2. The second function returns `NULL` for a zero divisor or a missing argument.
+
+6. **Explore Ukraine's annual changes.** Use a parameterized query, a CTE, and `LAG` to compare consecutive calendar years. Handle zero denominators with `NULLIF`, check for duplicate years, and summarize the first and last available values.
 
 ## Database Structure
 
@@ -52,6 +54,8 @@ The notebook uses `google.colab.files.upload()`, so these instructions target Go
 - Dividing an annual indicator by 12, 4, or 2 produces a period average, not observed monthly, quarterly, or half-year data.
 - Fractional indicator values are preserved. Year differences depend on the execution date.
 
-## Validation Status
+## Results and Validation
 
-The row counts reported above come from the notebook's saved outputs. They do not establish that the current version has completed a clean end-to-end run. Before publishing, run all cells in a fresh Colab runtime and save the resulting outputs without errors.
+The saved results show 10,521 source and normalized rows, 245 entities, no orphan records, and no duplicate lookup entries. The division function checks cover a normal value, a zero divisor, and missing arguments. For Ukraine, the first available rabies indicator is 4.34 in 1990 and the last is 5.22 in 2019; this endpoint comparison does not imply a steady trend.
+
+The notebook includes executed query outputs and a short conclusion. Its Python syntax and saved outputs were checked after the English translation; no error outputs are stored. A fresh-runtime end-to-end run of the translated version has not been verified.
